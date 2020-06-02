@@ -81,6 +81,13 @@ $(document).ready(function() {
 		reader.readAsText(f);
 	});
 
+	//Open the Withdrawal help input 
+	$('#withdrawalHelpBtn').click(function(e) {
+		$('.modal-body').load('help/withdrawal.html',function(){
+			$('#withdrawalHelpPopup').modal({show:true});
+		});
+	});
+
 });
 
 var Simulation = {
