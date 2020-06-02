@@ -45,6 +45,11 @@ $(document).ready(function() {
 		}
 	});
 
+	// Enable tooltops
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	});
+
 	//Resizing dygraphs graphs when output tab is clicked. This allows graphs to be seen when switching tabs.
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
 		//Dygraphs window resize. Workaround for blank graphs at load time. This is for resizing when changing tabs. 

@@ -311,8 +311,8 @@
                                 Retirement Start must be >= Simulation Start. Retirement Start must be before Retirement End.
                             </div>
 														<label>Simulation Start Year:<input type="text" class="form-control toot" ng-model="data.simulationStartYear" id="simulationStartYear"></label>
-                            <label>Retirement Year:<input type="text" class="form-control toot" ng-model="data.retirementStartYear" id="retirementStartYear"></label>
-                            <label>Retirement End Year:<input type="text" class="form-control" ng-model="data.retirementEndYear" id="retirementEndYear"></label>
+                            <label data-toggle="tooltip" data-placement="bottom" title="The year in which you begin withdrawing money from retirement investments. This can be the current year, or any year in the future.">Retirement Year:<input type="text" class="form-control toot" ng-model="data.retirementStartYear" id="retirementStartYear"></label>
+                            <label data-toggle="tooltip" data-placement="bottom" title="This is the end year for the simulation. Set this to be in line with your life expectancy estiamtes.">Retirement End Year:<input type="text" class="form-control" ng-model="data.retirementEndYear" id="retirementEndYear"></label>
                             <p>Pre-retirement length = {{ data.retirementStartYear - data.simulationStartYear }} years.</p>
                             <p>Retirement length = {{ data.retirementEndYear - data.retirementStartYear }} years.</p>
                             <p>Total simulation length = {{ data.retirementEndYear - data.simulationStartYear }} years.</p>
@@ -436,17 +436,17 @@
                                 <span class="sr-only">Error:</span>
                                 Portfolio must be a positive number.
                             </div>
-                            <label>Portfolio Value:
+                            <label data-toggle="tooltip" data-placement="bottom" title="Your total investable assets. Include all accounts where stocks, bonds, and cash instruments might reside. Do not include pensions, social security, house equity or other income streams in this number.">Portfolio Value:
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
                                     <input type="number" class="form-control" ng-model="data.portfolio.initial">
                                 </div>
                             </label>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
+                            <div class="panel panel-default" >
+                                <div class="panel-heading" data-toggle="tooltip" data-placement="top" title="This is the asset allocation of your portfolio as of today.">
                                     Initial Assets
                                 </div>
-                                <div class="panel-body">
+                                <div class="panel-body" >
                                     <div class="row">
                                         <div class="alert alert-danger" role="alert" id="allocationError" style="display:none">
                                             <span class="sr-only">Error:</span>
@@ -493,7 +493,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>
+                                            <label data-toggle="tooltip" data-placement="bottom" title="The maintenance/administrative fees that your portfolio requires. This number is calculated against your entire portfolio each year, so please use an average number across all accounts.">
                                                 Fees/Drag:
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" ng-model="data.portfolio.percentFees">
@@ -502,7 +502,7 @@
                                             </label>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>
+                                            <label data-toggle="tooltip" data-placement="bottom" title="Since there is no reliable historical data on cash investments (that I can find), the Growth of Cash input is for the user to determine how much growth over time that your cash allocation receives.">
                                                 Growth of Cash:
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" ng-model="data.portfolio.growthOfCash">
@@ -627,7 +627,7 @@
                                 </label>
                             </div>
                             <div id="yearlySpendingOptions" class="spendingOptions">
-                                <label>
+                                <label data-toggle="tooltip" data-placement="bottom" title="Your yearly default expenses that will be subtracted from your portfolio.">
                                     Initial Yearly Spending:
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
@@ -646,7 +646,7 @@
                                     </div>
                                 </label>
                                 <div id="percentageOfPortfolioLimits">
-                                    <label>
+                                    <label data-toggle="tooltip" data-placement="bottom" title="Prevent the simulation from going to an unreasonable level of spending, by setting the mininum that you want to allow during retirement.">
                                         Floor Spending:
                                         <div class="input-group">
                                             <select class="form-control"
@@ -667,7 +667,7 @@
                                         </div>
                                     </label>
                                     <br>
-                                    <label>
+                                    <label data-toggle="tooltip" data-placement="bottom" title="Prevent the simulation from going to an unreasonable level of spending, by setting the maximum that you want to allow during retirement.">
                                         Ceiling Spending:
                                         <div class="input-group">
                                             <select class="form-control"
