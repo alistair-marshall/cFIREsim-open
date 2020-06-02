@@ -83,11 +83,8 @@ $(document).ready(function() {
 
 	//Open the Withdrawal help input 
 	$('#withdrawalHelpBtn').click(function(e) {
-		$('.modal-body').load('help/withdrawal.html',function(){
-			$('#withdrawalHelpPopup').modal({show:true});
-		});
-	});
-
+		$('#withdrawalHelpPopup').modal('show').find('.modal-body').load('/help/withdrawal.html');
+	  });
 });
 
 var Simulation = {
