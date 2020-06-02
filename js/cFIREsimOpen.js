@@ -85,6 +85,11 @@ $(document).ready(function() {
 	$('#withdrawalHelpBtn').click(function(e) {
 		$('#withdrawalHelpPopup').modal('show').find('.modal-body').load('/help/withdrawal.html');
 	  });
+
+	//Open the rebalancing help input 
+	$('#rebalanceHelpBtn').click(function(e) {
+		$('#rebalanceHelpPopup').modal('show').find('.modal-body').load('/help/rebalance.html');
+	  });
 });
 
 var Simulation = {
