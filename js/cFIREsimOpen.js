@@ -81,14 +81,10 @@ $(document).ready(function() {
 		reader.readAsText(f);
 	});
 
-	//Open the Withdrawal help input 
-	$('#withdrawalHelpBtn').click(function(e) {
-		$('#withdrawalHelpPopup').modal('show').find('.modal-body').load('/help/withdrawal.html');
-	  });
-
-	//Open the rebalancing help input 
-	$('#rebalanceHelpBtn').click(function(e) {
-		$('#rebalanceHelpPopup').modal('show').find('.modal-body').load('/help/rebalance.html');
+	//Open the help popul 
+	$('.btn-help').click(function(e) {
+		var dataURL = $(this).attr('data-href');
+		$('#helpPopup').modal('show').find('.modal-body').load(dataURL);
 	  });
 });
 
