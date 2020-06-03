@@ -89,12 +89,13 @@ $(document).ready(function() {
 		$('#helpPopup').find('.modal-title').text(dataTitle);
 	  });
 	// Toggle up/down icon on show hide of collapse element
-	$(".collapse").on('show.bs.collapse', function(){
+	$("#gettingStarted").on('show.bs.collapse', function(){
 		$(this).prev(".panel-heading").find("img").attr("src","image/up.svg");
+		Cookies.set('hidegs','0');
 	}).on('hide.bs.collapse', function(){
 		$(this).prev(".panel-heading").find("img").attr("src","image/down.svg");
+		Cookies.set('hidegs','1', {expires: 365});
 	});
-
 });
 
 var Simulation = {
