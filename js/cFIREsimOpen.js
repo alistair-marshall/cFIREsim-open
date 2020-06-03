@@ -100,6 +100,7 @@ $(document).ready(function() {
 	var hidegs = Cookies.get('hidegs');
 	if (hidegs == '1'){
 		$("#gettingStarted").removeClass('in');
+		$("#gettingStarted").prev(".panel-heading").find("img").attr("src","image/down.svg");
 	}
 });
 
