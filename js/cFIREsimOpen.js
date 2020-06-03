@@ -96,6 +96,11 @@ $(document).ready(function() {
 		$(this).prev(".panel-heading").find("img").attr("src","image/down.svg");
 		Cookies.set('hidegs','1', {expires: 365});
 	});
+
+	var hidegs = Cookies.get('hidegs');
+	if (hidegs == '1'){
+		$("#gettingStarted").removeClass('in');
+	}
 });
 
 var Simulation = {
