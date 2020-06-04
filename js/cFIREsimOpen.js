@@ -101,13 +101,17 @@ $(document).ready(function() {
 		}
 	});
 
-	// Hide getting started pane if user previously hid it.
+	// Show getting started unless user previously hid it.
+	var showpane = true;
 	if (typeof(Storage) !== "undefined") {
 		var hidegs = localStorage.getItem("hidegs", "Smith");
 		if (hidegs == '1'){
-			$("#gettingStarted").removeClass('in');
-			$("#gettingStarted").prev(".panel-heading").find("img").attr("src","image/down.svg");
+			showpane = false;
 		}
+	}
+	if (showpane == true){
+		$("#gettingStarted").addClass('in');
+		$("#gettingStarted").prev(".panel-heading").find("img").attr("src","image/up.svg");
 	}
 });
 
