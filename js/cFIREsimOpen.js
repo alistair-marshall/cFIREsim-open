@@ -104,7 +104,7 @@ $(document).ready(function() {
 	// Show getting started unless user previously hid it.
 	var showpane = true;
 	if (typeof(Storage) !== "undefined") {
-		var hidegs = localStorage.getItem("hidegs", "Smith");
+		var hidegs = localStorage.getItem("hidegs");
 		if (hidegs == '1'){
 			showpane = false;
 		}
