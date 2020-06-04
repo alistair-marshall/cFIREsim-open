@@ -91,16 +91,23 @@ $(document).ready(function() {
 	// Toggle up/down icon on show hide of collapse element
 	$("#gettingStarted").on('show.bs.collapse', function(){
 		$(this).prev(".panel-heading").find("img").attr("src","image/up.svg");
-		Cookies.set('hidegs','0');
+		if (typeof(Storage) !== "undefined") {
+			localStorage.setItem('hidegs','0');
+		}
 	}).on('hide.bs.collapse', function(){
 		$(this).prev(".panel-heading").find("img").attr("src","image/down.svg");
-		Cookies.set('hidegs','1', {expires: 365});
+		if (typeof(Storage) !== "undefined") {
+			localStorage.setItem('hidegs','1');
+		}
 	});
 
-	var hidegs = Cookies.get('hidegs');
-	if (hidegs == '1'){
-		$("#gettingStarted").removeClass('in');
-		$("#gettingStarted").prev(".panel-heading").find("img").attr("src","image/down.svg");
+	// Hide getting started pane if user previously hid it.
+	if (typeof(Storage) !== "undefined") {
+		var hidegs = localStorage.getItem("hidegs", "Smith");
+		if (hidegs == '1'){
+			$("#gettingStarted").removeClass('in');
+			$("#gettingStarted").prev(".panel-heading").find("img").attr("src","image/down.svg");
+		}
 	}
 });
 
