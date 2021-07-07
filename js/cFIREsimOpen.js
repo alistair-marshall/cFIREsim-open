@@ -395,6 +395,45 @@ var Simulation = {
 					ret.gold = form.portfolio.percentGold / 100;
 					ret.cash = form.portfolio.percentCash / 100;
 				}
+				break;
+			case 5: //NotOmegaNot
+				if (j>0){
+					var prev = j - 1;
+					var targetvalues = {
+						"equities": this.sim[i][j].cumulativeInflation* form.portfolio.initial * form.portfolio.percentEquities / 100,
+						"safe": this.sim[i][j].cumulativeInflation* form.portfolio.initial * (100-form.portfolio.percentEquities) / 100,
+					};
+					var currentequities
+					var totalsafe = this.sim[i][prev].bonds.end + this.sim[i][prev].gold.end + this.sim[i][prev].cash.end
+					if (this.sim[i][prev].equities.end > targetvalues.equities){ // equities are doing well
+						// remove spending from equities
+						currentequities = this.sim[i][prev].equities.end - this.sim[i][j].spending + this.sim[i][j].sumOfAdjustments
+						// increase bonds, gold and cash reserves if required
+						var rebalanceval = Math.min((currentequities - targetvalues.equities), (targetvalues.safe - totalsafe))
+						rebalanceval = Math.max(rebalanceval,0)
+						currentequities = currentequities - rebalanceval
+						totalsafe = totalsafe + rebalanceval
+					} else { // equities are doing poorly
+						// leave equities alone
+						currentequities = this.sim[i][prev].equities.end
+						// remove spending from other assets
+						totalsafe = totalsafe  - this.sim[i][j].spending + this.sim[i][j].sumOfAdjustments
+						if (totalsafe < 0){
+							// ran out of safe assets, need to spend equities anyway.
+							currentequities = currentequities + totalsafe
+							totalsafe = 0
+						}
+					}
+					ret.equities = currentequities / this.sim[i][j].portfolio.start;
+					ret.bonds = totalsafe * form.portfolio.percentBonds / (this.sim[i][j].portfolio.start * (100- form.portfolio.percentEquities));
+					ret.gold = totalsafe * form.portfolio.percentGold / (this.sim[i][j].portfolio.start * (100- form.portfolio.percentEquities));
+					ret.cash = totalsafe * form.portfolio.percentCash / (this.sim[i][j].portfolio.start * (100- form.portfolio.percentEquities));
+				} else {
+					ret.equities = form.portfolio.percentEquities / 100;
+					ret.bonds = form.portfolio.percentBonds / 100;
+					ret.gold = form.portfolio.percentGold / 100;
+					ret.cash = form.portfolio.percentCash / 100;
+				}
 		}
 		return ret;
 	},
